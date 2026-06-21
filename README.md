@@ -6,7 +6,7 @@
 
 ## Description
 
-A profile management system using Java Servlet, JSP, JDBC, and Derby database. Users can add, view, search, edit, and delete student profiles.
+A profile management system using Java Servlet, JSP, JDBC, and database. Users can add, view, search, edit, and delete student profiles.
 
 ## Features
 
