@@ -20,5 +20,6 @@ A profile management system using Java Servlet, JSP, JDBC, and Derby database. U
 
 ![Add Profile](screenshots/add_profile.png)
 ![View Profiles](screenshots/view_profiles.png)
+![Profile Submitted](screenshots/profile.png)
 ![Edit Profile](screenshots/edit_profile.png)
 ![Delete Profile](screenshots/delete_profile.png)
