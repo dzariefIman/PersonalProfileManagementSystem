@@ -1,0 +1,16 @@
+# NetBeans
+nbproject/private/
+build/
+dist/
+.nbattrs
+*.bak
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+*.class
+*.jar
+*.war
+*.log

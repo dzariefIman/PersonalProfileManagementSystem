@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Profile</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    
+    <body>
+        <div id="toast" class="toast"></div>
+
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1><i class="fas fa-user-circle"></i> Profile Manager</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="add_profile.html" class="sidebar-link active">
+                    <i class="fas fa-plus"></i> Add Profile
+                </a>
+                <a href="AddProfileServlet?action=viewAll" class="sidebar-link">
+                    <i class="fas fa-list"></i> View Profiles
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="page-header">
+                <h1><i class="fas fa-user-plus"></i> Add New Profile</h1>
+            </div>
+
+            <form action="AddProfileServlet" method="post" class="profile-form">
+                <input type="hidden" name="action" value="add">
+                
+                <div class="form-group">
+                    <label for="studentID"><i class="fas fa-id-card"></i> Student ID</label>
+                    <input type="text" id="studentID" name="studentID" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user"></i> Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="programme"><i class="fas fa-book"></i> Programme</label>
+                    <input type="text" id="programme" name="programme" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="hobbies"><i class="fas fa-heart"></i> Hobbies</label>
+                    <input type="text" id="hobbies" name="hobbies" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="introduction"><i class="fas fa-comment"></i> Introduction</label>
+                    <textarea id="introduction" name="introduction" rows="5" required></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Add Profile
+                    </button>
+                    <a href="AddProfileServlet?action=viewAll" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>
+                </div>
+            </form>
+        </main>
+    </body>
+
+    <script>
+        (function() {
+            var params = new URLSearchParams(window.location.search);
+            if (params.get('success') === 'true') {
+                var toast = document.getElementById('toast');
+                toast.textContent = 'Successfully added student ' + params.get('id') + '!';
+                toast.classList.add('show');
+                setTimeout(function() { toast.classList.remove('show'); }, 4000);
+                // Clean URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            } else if (params.get('error') === 'true') {
+                var toast = document.getElementById('toast');
+                toast.textContent = 'Error adding profile!';
+                toast.classList.add('show', 'error');
+                setTimeout(function() { toast.classList.remove('show', 'error'); }, 4000);
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        })();
+    </script>
+</html>
